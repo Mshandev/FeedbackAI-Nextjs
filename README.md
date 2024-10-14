@@ -1,0 +1,2 @@
+# FeedbackAI-Nextjs
+ FeedbackAI is a user-friendly platform that allows individuals to provide anonymous feedback enhanced by AI-powered suggestions. Built with Next.js for a seamless user experience, this application utilizes Mongoose for effective database management, Zod for type-safe validation, and TypeScript to ensure robust and maintainable code. By prioritizing user privacy, FeedbackAI empowers users to share their thoughts and insights securely while benefiting from intelligent suggestions.
