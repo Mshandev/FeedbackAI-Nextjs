@@ -49,6 +49,7 @@ const VerifyAccount = () => {
         description: errorMessage,
         variant: "destructive",
       });
+      router.replace('/sign-in')
     }
   };
   return (
