@@ -1,104 +1,103 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/options";
-import dbConnect from "@/lib/dbConnect";
-import UserModel from "@/model/User";
-import { User } from "next-auth";
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]/options';
+import dbConnect from '@/lib/dbConnect';
+import UserModel from '@/model/User';
+import { User } from 'next-auth';
 
 export async function POST(request: Request) {
+  // Connect to the database
   await dbConnect();
 
   const session = await getServerSession(authOptions);
-  const user: User = session?.user as User;
-
+  const user: User = session?.user;
   if (!session || !session.user) {
     return Response.json(
-      {
-        success: false,
-        message: "Not Authenticated",
-      },
+      { success: false, message: 'Not authenticated' },
       { status: 401 }
     );
   }
+
   const userId = user._id;
-  const { acceptMessage } = await request.json();
+  const { acceptMessages } = await request.json();
+
   try {
-    const updateUser = await UserModel.findByIdAndUpdate(
+    // Update the user's message acceptance status
+    const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
-      {
-        isAcceptingMessage: acceptMessage,
-      },
+      { isAcceptingMessages: acceptMessages },
       { new: true }
     );
-    if (!updateUser) {
+
+    if (!updatedUser) {
+      // User not found
       return Response.json(
         {
           success: false,
-          message: "Failed to update User status",
+          message: 'Unable to find user to update message acceptance status',
         },
-        { status: 401 }
+        { status: 404 }
       );
     }
+
+    // Successfully updated message acceptance status
     return Response.json(
       {
         success: true,
-        message: "Message Acceptance status Updated successfully ",
-        updateUser,
+        message: 'Message acceptance status updated successfully',
+        updatedUser,
       },
       { status: 200 }
     );
   } catch (error) {
-    console.log("Failed to update User status", error);
+    console.error('Error updating message acceptance status:', error);
     return Response.json(
-      {
-        success: false,
-        message: "Failed to update User status",
-      },
+      { success: false, message: 'Error updating message acceptance status' },
       { status: 500 }
     );
   }
 }
 
+
 export async function GET(request: Request) {
+  // Connect to the database
   await dbConnect();
 
+  // Get the user session
   const session = await getServerSession(authOptions);
-  const user: User = session?.user as User;
+  const user = session?.user;
 
-  if (!session || !session.user) {
+  // Check if the user is authenticated
+  if (!session || !user) {
     return Response.json(
-      {
-        success: false,
-        message: "Not Authenticated",
-      },
+      { success: false, message: 'Not authenticated' },
       { status: 401 }
     );
   }
-  const userId = user._id;
+
   try {
-    const foundUser = await UserModel.findById(userId);
+    // Retrieve the user from the database using the ID
+    const foundUser = await UserModel.findById(user._id);
+
     if (!foundUser) {
+      // User not found
       return Response.json(
-        {
-          success: false,
-          message: "User not found",
-        },
+        { success: false, message: 'User not found' },
         { status: 404 }
       );
     }
+
+    // Return the user's message acceptance status
     return Response.json(
       {
         success: true,
-        isAcceptingMessages: foundUser.isAcceptingMessage,
+        isAcceptingMessages: foundUser.isAcceptingMessages,
       },
       { status: 200 }
     );
   } catch (error) {
-    console.log("Error in Getting Acceptance Message Status", error);
+    console.error('Error retrieving message acceptance status:', error);
     return Response.json(
-      {
-        success: false,
-        message: "Error in Getting Acceptance Message Status ",
-      },
+      { success: false, message: 'Error retrieving message acceptance status' },
       { status: 500 }
     );
   }

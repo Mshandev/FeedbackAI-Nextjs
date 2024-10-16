@@ -1,47 +1,43 @@
-import dbConnect from "@/lib/dbConnect";
-import UserModel from "@/model/User";
-import MessageModel, { Message } from "@/model/Message";
+import UserModel from '@/model/User';
+import dbConnect from '@/lib/dbConnect';
+import { Message } from '@/model/User';
 
 export async function POST(request: Request) {
   await dbConnect();
   const { username, content } = await request.json();
+
   try {
-    const user = await UserModel.findOne({ username });
+    const user = await UserModel.findOne({ username }).exec();
+
     if (!user) {
       return Response.json(
-        {
-          success: false,
-          message: "User not found ",
-        },
+        { message: 'User not found', success: false },
         { status: 404 }
       );
     }
-    if (!user.isAcceptingMessage) {
+
+    // Check if the user is accepting messages
+    if (!user.isAcceptingMessages) {
       return Response.json(
-        {
-          success: false,
-          message: "User is not accepting message at this time",
-        },
-        { status: 403 }
+        { message: 'User is not accepting messages', success: false },
+        { status: 403 } // 403 Forbidden status
       );
     }
+
     const newMessage = { content, createdAt: new Date() };
+
+    // Push the new message to the user's messages array
     user.messages.push(newMessage as Message);
     await user.save();
+
     return Response.json(
-      {
-        success: true,
-        message: "Message Send Successfully",
-      },
-      { status: 200 }
+      { message: 'Message sent successfully', success: true },
+      { status: 201 }
     );
   } catch (error) {
-    console.log("Error in sending message", error);
+    console.error('Error adding message:', error);
     return Response.json(
-      {
-        success: false,
-        message: "Error in sending message",
-      },
+      { message: 'Internal server error', success: false },
       { status: 500 }
     );
   }
