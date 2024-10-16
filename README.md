@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Full Stack Ecommerce - Nextjs
 
-## Getting Started
+FeedbackAI is a user-friendly platform for anonymous feedback with AI-powered suggestions. Built with Next.js, Mongoose, Zod, TypeScript, and OpenAI, it prioritizes user privacy while providing intelligent recommendations. This repository contains the source code for a full-stack application featuring a custom authentication system with JWT tokens, sessions, and AI integration.
 
-First, run the development server:
+## Demo
+
+- Live Preview: [https://ecommerce-nextjs-by-shan.vercel.app/](https://ecommerce-nextjs-by-shan.vercel.app/)
+
+## Features
+
+- Custom authentication system for User Registration
+- Sign In / Logout with Nextjs Auth, JWT Tokens and sesssion
+- OTP verification for new user account
+- Check available Username at Runtime
+- Resend email integration for email notifications
+- User dashboard for managing anonymous messages
+- User can accept/close messages.
+- User can copy their message URL and share with peoples.
+- AI feature integration for enhanced functionality
+- Anonymous feedback submission with AI suggestions
+- Responsive design using Tailwind CSS and Shadcn UI
+- Dynamic routing and server-side rendering capabilities
+- Form handling with React Hook Form and validation using ZOD
+
+## Screenshots
+
+![Home](https://i.ibb.co/vjSZFWg/feedback-AI-1.png)
+- Home Page
+
+![Login](https://i.ibb.co/w4ZxnKL/feedback-AI-2.png)
+- Login Page
+
+![Signup](https://i.ibb.co/hRKhFvv/feedback-AI-3.png)
+- Signup Page
+
+![Verify](https://i.ibb.co/q5nD40b/feedback-AI-6.png)
+- OTP Verification
+
+![Message](https://i.ibb.co/fdqxJPF/feedback-AI-4.png)
+- Message Page
+
+![Dashboard](https://i.ibb.co/FHD4mQr/feedback-AI-5.png)
+- User Dashboard Page
+  
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    https://github.com/Mshandev/FeedbackAI-Nextjs.git
+```
+Go to the project directory
+
+```bash
+    cd FeedbackAI-Nextjs
+```
+Install dependencies
+
+```bash
+    npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Setup Environment Vaiables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```Make .env file in "root" folder and store environment Variables
+  MONGODB_URI= YOUR-MONGO-URL
+  RESEND_API_KEY= YOUR-RESEND-API-KEY
+  NEXTAUTH_SECRET=YOUR-SECRET-KEY
+  OPENAI_API_KEY= YOUR-OPENAI-API-KEY
+ ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Start the server
 
-## Learn More
+```bash
+    npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
+* [Nextjs](https://nextjs.org/)
+* [Mongodb](https://www.mongodb.com/)
+* [Resend](https://resend.com/)
+* [OpenAI](https://openai.com/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Tailwind](https://tailwindcss.com/)
+* [Shadcn](https://ui.shadcn.com/)
+* [Zod](https://zod.dev/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The application is deployed on Vercel.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are always welcome!
+Just raise an issue, and we will discuss it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Feedback
+
+If you have any feedback, please reach out to me [here](https://www.linkedin.com/in/muhammad-shan-full-stack-developer/)
