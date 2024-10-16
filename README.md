@@ -4,7 +4,7 @@ FeedbackAI is a user-friendly platform for anonymous feedback with AI-powered su
 
 ## Demo
 
-- Live Preview: [https://ecommerce-nextjs-by-shan.vercel.app/](https://ecommerce-nextjs-by-shan.vercel.app/)
+- Live Preview: [https://feedback-ai-nextjs.vercel.app/](https://feedback-ai-nextjs.vercel.app/)
 
 ## Features
 
