@@ -1,4 +1,4 @@
-# Full Stack Ecommerce - Nextjs
+# Full Stack FeedbackAI - Nextjs
 
 FeedbackAI is a user-friendly platform for anonymous feedback with AI-powered suggestions. Built with Next.js, Mongoose, Zod, TypeScript, and OpenAI, it prioritizes user privacy while providing intelligent recommendations. This repository contains the source code for a full-stack application featuring a custom authentication system with JWT tokens, sessions, and AI integration.
 
@@ -27,10 +27,10 @@ FeedbackAI is a user-friendly platform for anonymous feedback with AI-powered su
 ![Home](https://i.ibb.co/vjSZFWg/feedback-AI-1.png)
 - Home Page
 
-![Login](https://i.ibb.co/w4ZxnKL/feedback-AI-2.png)
+![Login](https://i.ibb.co/kxMV97j/feedback-AI-6.png)
 - Login Page
 
-![Signup](https://i.ibb.co/hRKhFvv/feedback-AI-3.png)
+![Signup](https://i.ibb.co/sWP5cDn/feedback-AI-7.png)
 - Signup Page
 
 ![Verify](https://i.ibb.co/q5nD40b/feedback-AI-6.png)
